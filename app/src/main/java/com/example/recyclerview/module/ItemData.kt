@@ -1,4 +1,4 @@
-package com.example.recyclerview
+package com.example.recyclerview.module
 
 data class ItemData(
     val id: Int,
