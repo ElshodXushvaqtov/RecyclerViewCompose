@@ -100,7 +100,7 @@ fun Item(itemData: ItemData, navController: NavHostController) {
         Spacer(modifier = Modifier.height(15.dp))
         Row(horizontalArrangement = Arrangement.Center) {
 
-            Text(text = "$52", fontWeight = FontWeight.Bold)
+            Text(text = "$${itemData.price}", fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.width(5.dp))
             Text(
                 text = itemData.price,
