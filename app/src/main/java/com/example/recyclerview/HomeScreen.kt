@@ -17,10 +17,14 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -50,7 +54,15 @@ fun HomeScreen(navController: NavHostController) {
 
 @Composable
 fun Item(itemData: ItemData, navController: NavHostController) {
+    var isClicked by remember {
+        mutableStateOf(false)
+    }
 
+    val painterResource: Painter = if (isClicked) {
+        painterResource(id = R.drawable.baseline_favorite_24)
+    } else {
+        painterResource(id = R.drawable.baseline_favorite_border_24)
+    }
     Column(
         Modifier
             .fillMaxSize()
@@ -73,12 +85,12 @@ fun Item(itemData: ItemData, navController: NavHostController) {
                     .width(180.dp)
             )
             IconButton(
-                onClick = { },
+                onClick = { isClicked = !isClicked },
                 Modifier.align(Alignment.TopEnd)
             ) {
 
                 Image(
-                    painter = painterResource(id = R.drawable.baseline_favorite_border_24),
+                    painter = painterResource,
                     contentDescription = null
                 )
 
